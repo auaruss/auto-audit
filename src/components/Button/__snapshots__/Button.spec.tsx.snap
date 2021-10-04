@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`the Button component matches the Snapshot 1`] = `
+<button
+  type="button"
+>
+  Test Button
+</button>
+`;

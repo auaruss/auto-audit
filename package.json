@@ -1,0 +1,65 @@
+{
+  "name": "react-storybook-starter",
+  "version": "1.0.0",
+  "description": "This repository contains all the pieces for a starter storybook project.",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run build:storybook && npm run build:next",
+    "build:next": "next build",
+    "build:storybook": "build-storybook -o ./public/storybook",
+    "eslint": "eslint src/components/** src/stories/** pages/** --ext .tsx,.ts,.js,.jsx",
+    "lint": "eslint",
+    "start": "next start",
+    "start:dev": "next",
+    "start:prod": "npm run build && npm start",
+    "storybook": "start-storybook -p 6006 -c .storybook",
+    "test": "jest && npm run lint",
+    "test:unit": "jest",
+    "test:update": "jest --updateSnapshot",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --collect-coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sparkbox/react-storybook-starter.git"
+  },
+  "author": "Sparkbox",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sparkbox/react-storybook-starter/issues"
+  },
+  "homepage": "https://github.com/sparkbox/react-storybook-starter#readme",
+  "dependencies": {
+    "next": "^10.0.3",
+    "react": "^17.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@sparkbox/eslint-config-sparkbox": "^1.1.5",
+    "@storybook/addon-actions": "^6.1.11",
+    "@storybook/addon-backgrounds": "^6.1.15",
+    "@storybook/addon-docs": "^6.1.15",
+    "@storybook/addon-knobs": "^6.1.11",
+    "@storybook/react": "^6.1.11",
+    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/react": "^11.2.3",
+    "@types/jest": "^26.0.19",
+    "@types/node": "^14.14.14",
+    "@types/react": "^17.0.0",
+    "@types/react-test-renderer": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.10.0",
+    "@typescript-eslint/parser": "^4.10.0",
+    "babel-jest": "^26.6.3",
+    "babel-loader": "^8.2.2",
+    "babel-preset-react-app": "^10.0.0",
+    "eslint": "^7.15.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "jest": "^26.6.3",
+    "react-dom": "^17.0.1",
+    "react-test-renderer": "^17.0.1",
+    "typescript": "^4.1.3"
+  }
+}
