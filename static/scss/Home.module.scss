@@ -1,32 +1,4 @@
-// colors
-$primary: #d9d;
-$primary-light: #fcf;
-$primary-dark: #959;
-$black: black;
-
-$dark-rows: $primary;
-$light-rows: $primary-light;
-$text-color: $black;
-
-$header-bg: $primary;
-$caption-bg: $primary;
-$nav-bg: $primary;
-
-$nav-hover: $primary-dark;
-
-$font-stack: sans-serif;
-
-$large-breakpoint: 60rem;
-
-body {
-  margin: 0;
-  font-family: $font-stack;
-  overflow: hidden;
-}
-
-h1 {
-  font-size: 2rem;
-}
+@import './variables';
 
 .app {
   color: $text-color;
@@ -173,22 +145,6 @@ h1 {
 
   @media (min-width: 60rem) {
     display: none;
-  }
-}
-
-.header {
-  background: $header-bg;
-  text-align: center;
-  border: 1px solid black;
-  width: 100%;
-  padding: 0.25rem;
-
-  @supports (display: grid) {
-    grid-area: header;
-  }
-
-  @media (min-width: $large-breakpoint) {
-    top: 0;
   }
 }
 
