@@ -1,0 +1,264 @@
+// colors
+$primary: #d9d;
+$primary-light: #fcf;
+$primary-dark: #959;
+$black: black;
+
+$dark-rows: $primary;
+$light-rows: $primary-light;
+$text-color: $black;
+
+$header-bg: $primary;
+$caption-bg: $primary;
+$nav-bg: $primary;
+
+$nav-hover: $primary-dark;
+
+$font-stack: sans-serif;
+
+$large-breakpoint: 60rem;
+
+body {
+  margin: 0;
+  font-family: $font-stack;
+  overflow: hidden;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+.app {
+  color: $text-color;
+  overflow: hidden;
+
+  @supports (display: grid) {
+    display: grid;
+    grid-template-areas:
+      "header"
+      "nav"
+      "content";
+
+    @media (min-width: $large-breakpoint) {
+      grid-template-areas:
+        "header header"
+        "nav content";
+
+      grid-template-columns: 1fr 3fr;
+    }
+  }
+}
+
+.audit-table__caption {
+  font-weight: bold;
+  padding: 1rem;
+}
+
+.site-audits {
+  background: $primary;
+  overflow-y: auto;
+  
+  &--displayed-mobile {
+    overflow-y: scroll;
+    height: 85vh;
+  }
+
+  &__title {
+    background: $nav-bg;
+    display: none;
+    padding: 1rem;
+    
+    overflow: hidden;
+
+    &--displayed-mobile {
+      display: block;
+    }
+
+    &:hover, &:focus {
+      background: $nav-hover;
+    }
+
+    @media (min-width: $large-breakpoint) {
+      display: block;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+
+  &__mobile-dropdown {
+    display: flex;
+    justify-content: space-between;
+    min-width: 15rem;
+    margin: 2rem auto;
+    width: 80%;
+    height: 5rem;
+    border: 5px solid $primary-dark;
+    background-color: $primary-light;
+    border-radius: 1rem;
+
+    &:hover {
+      background-color: $primary;
+    }
+
+    @media (min-width: $large-breakpoint) {
+      background: revert;
+      border: revert;
+    }
+  }
+
+  &__dropdown-prompt {
+    padding-left: 1rem;
+    padding-top: 0.1rem;
+  }
+
+  &__dropdown-icon {
+    transform: scale(0.5) rotate(-90deg);
+
+    &--opened {
+      transform: scale(0.5) rotate(0deg);
+    }
+
+    @media (min-width: $large-breakpoint) {
+      display: none;
+    }
+  }
+
+  @media (min-width: $large-breakpoint) {
+    background: $nav-bg;
+    float: left;
+    display: block;
+    border-right: 1px solid black;
+    height: 100vh;
+    padding: 1rem;
+    
+    &__title:last-child {
+      margin-bottom: 6rem;
+    }
+  }
+
+  @supports (display: grid) {
+    float: clear;
+    grid-area: nav;
+
+    @media(min-width: $large-breakpoint) {
+      display: block;
+    }
+  }
+}
+
+.content-pane {
+  display: block;
+  overflow-y: auto;
+  background: $primary-light;
+  width: 100%;
+  height: calc(100vh - 90px);
+
+  .audit-table:last-child {
+    margin-bottom: 10rem;
+  }
+
+  @media (min-width: 60rem) {
+    .audit-table:last-child {
+      margin-bottom: 3rem;
+    }
+    
+    @supports (display: grid) {
+      grid-area: content;
+    }
+  }
+}
+
+.mobile-table-marker {
+  font-weight: bold;
+
+  @media (min-width: 60rem) {
+    display: none;
+  }
+}
+
+.header {
+  background: $header-bg;
+  text-align: center;
+  border: 1px solid black;
+  width: 100%;
+  padding: 0.25rem;
+
+  @supports (display: grid) {
+    grid-area: header;
+  }
+
+  @media (min-width: $large-breakpoint) {
+    top: 0;
+  }
+}
+
+.audit-table {
+  border-collapse: collapse;
+  margin: 0 auto;
+  width: 90%;
+
+  th, td {
+    display: block;
+    margin: 0 auto;
+    padding: 1rem;
+
+    &:nth-child(odd) {
+      background: $dark-rows;
+    }
+
+    &:nth-child(even) {
+      background: $light-rows;  
+    }
+  }
+
+  &__header tr {
+    display: none;
+  }
+
+  &__body tr {
+    display: block;
+    border: 1px solid black;
+    margin-bottom: 2rem;
+  }
+
+  @media (min-width: 60rem) {
+    margin: 0 auto;
+    border: 1px solid black;
+    margin-top: 2rem;
+    padding: 1rem;
+
+    caption {
+      background: $caption-bg;
+      padding: 1rem;
+      border: 1px solid black;
+      border-bottom: none;
+    }
+
+    th, td {
+      text-align: left;
+      border: none;
+      padding: 1rem;
+    }
+
+    td {
+      display: table-cell;
+    }
+
+    th { 
+      display: revert;
+    }
+
+    tbody th {
+      font-weight: normal;
+    }
+
+    &__header tr {
+      display: revert;
+    }
+
+    &__body tr {
+      display: revert;
+      border: none;
+    }
+  }
+}
