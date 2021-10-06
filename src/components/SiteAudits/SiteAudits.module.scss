@@ -1,0 +1,93 @@
+@import '../../../static/scss/variables';
+
+.site-audits {
+  background: $primary;
+  overflow-y: auto;
+  
+  &--displayed-mobile {
+    overflow-y: scroll;
+    height: 85vh;
+  }
+
+  &__title {
+    background: $nav-bg;
+    display: none;
+    padding: 1rem;
+    
+    overflow: hidden;
+
+    &--displayed-mobile {
+      display: block;
+    }
+
+    &:hover, &:focus {
+      background: $nav-hover;
+    }
+
+    @media (min-width: $large-breakpoint) {
+      display: block;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+
+  &__mobile-dropdown {
+    display: flex;
+    justify-content: space-between;
+    min-width: 15rem;
+    margin: 2rem auto;
+    width: 80%;
+    height: 5rem;
+    border: 5px solid $primary-dark;
+    background-color: $primary-light;
+    border-radius: 1rem;
+
+    &:hover {
+      background-color: $primary;
+    }
+
+    @media (min-width: $large-breakpoint) {
+      background: revert;
+      border: revert;
+    }
+  }
+
+  &__dropdown-prompt {
+    padding-left: 1rem;
+    padding-top: 0.1rem;
+  }
+
+  &__dropdown-icon {
+    transform: scale(0.5) rotate(-90deg);
+
+    &--opened {
+      transform: scale(0.5) rotate(0deg);
+    }
+
+    @media (min-width: $large-breakpoint) {
+      display: none;
+    }
+  }
+
+  @media (min-width: $large-breakpoint) {
+    background: $nav-bg;
+    float: left;
+    display: block;
+    border-right: 1px solid black;
+    height: 100vh;
+    padding: 1rem;
+    
+    &__title:last-child {
+      margin-bottom: 6rem;
+    }
+  }
+
+  @supports (display: grid) {
+    float: clear;
+    grid-area: nav;
+
+    @media(min-width: $large-breakpoint) {
+      display: block;
+    }
+  }
+}

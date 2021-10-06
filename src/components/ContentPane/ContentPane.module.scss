@@ -1,0 +1,85 @@
+@import '../../../static/scss/variables';
+
+.mobile-table-marker {
+  font-weight: bold;
+
+  @media (min-width: $large-breakpoint) {
+    display: none;
+  }
+}
+
+.audit-table {
+  border-collapse: collapse;
+  margin: 0 auto;
+  width: 90%;
+
+  th, td {
+    display: block;
+    margin: 0 auto;
+    padding: 1rem;
+
+    &:nth-child(odd) {
+      background: $dark-rows;
+    }
+
+    &:nth-child(even) {
+      background: $light-rows;  
+    }
+  }
+
+  &__caption {
+    font-weight: bold;
+    padding: 1rem;
+  }
+
+  &__header tr {
+    display: none;
+  }
+
+  &__body tr {
+    display: block;
+    border: 1px solid black;
+    margin-bottom: 2rem;
+  }
+
+  @media (min-width: 60rem) {
+    margin: 0 auto;
+    border: 1px solid black;
+    margin-top: 2rem;
+    padding: 1rem;
+
+    caption {
+      background: $caption-bg;
+      padding: 1rem;
+      border: 1px solid black;
+      border-bottom: none;
+    }
+
+    th, td {
+      text-align: left;
+      border: none;
+      padding: 1rem;
+    }
+
+    td {
+      display: table-cell;
+    }
+
+    th { 
+      display: revert;
+    }
+
+    tbody th {
+      font-weight: normal;
+    }
+
+    &__header tr {
+      display: revert;
+    }
+
+    &__body tr {
+      display: revert;
+      border: none;
+    }
+  }
+}
