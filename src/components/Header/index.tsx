@@ -5,3 +5,5 @@ export const Header = (): ReactElement  => (
     <h1>Auto audit dashboard</h1>
   </header>
 );
+
+export default Header;

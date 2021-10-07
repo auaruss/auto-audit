@@ -5,7 +5,9 @@ type Props = {
 };
 
 export const SiteAudit = ({ site }: Props): ReactElement => (
-  <div className="site-audits__title" title="{site}">
+  <div className="site-audits__title" title="{ site }">
     { site }
   </div>
 );
+
+export default SiteAudit;

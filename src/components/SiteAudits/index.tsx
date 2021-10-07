@@ -15,6 +15,8 @@ export const SiteAudits = (): ReactElement => (
       </svg>
     </div>
 
-    { sites.map((site) => <SiteAudit site={site} />) }
+    { sites.map((site) => <SiteAudit site={ site } />) }
   </nav>
 );
+
+export default SiteAudits;
