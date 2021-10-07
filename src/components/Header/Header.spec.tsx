@@ -1,9 +1,8 @@
-import * as React from "react";
-import { render, cleanup, screen } from '@testing-library/react';
+import * as React from 'react';
+import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import TestRenderer from 'react-test-renderer';
 
-import { Header } from ".";
+import { Header } from '.';
 
 describe('the Header component', () => {
   test('renders a header element', () => {
