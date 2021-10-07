@@ -37,7 +37,7 @@ export const AuditTableRow = ({
   </tr>
 );
 
-export const AuditTableCaption = (site: {site: string}): ReactElement => (
+export const AuditTableCaption = ({ site }: { site: string }): ReactElement => (
   <caption className='audit-table__caption'>
     Summary of the Google Lighthouse attributes of { site }
   </caption>
@@ -60,7 +60,15 @@ export const AuditTable = ({site, pages}: Props): ReactElement  => (
     <AuditTableCaption site={ site } />
     <AuditTableHeader />
     <tbody className='audit-table__body'>
-      { pages.map((page) => <AuditTableRow { ...page } />) }
+      { pages.map(({
+          name, performance, accessibility, bestPractices, seo,
+        }) => (<AuditTableRow
+          name={name}
+          performance={performance}
+          accessibility={accessibility}
+          bestPractices={bestPractices}
+          seo={seo}
+        />)) }
     </tbody>
   </table>
 );

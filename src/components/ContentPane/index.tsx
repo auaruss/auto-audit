@@ -44,7 +44,10 @@ const sparkboxData = {
 
 export const ContentPane = (): ReactElement  => (
   <main className='content-pane'>
-    <AuditTable { ...sparkboxData }/>
+    <AuditTable
+      site={sparkboxData.site}
+      pages={sparkboxData.pages }
+    />
   </main>
 );
 

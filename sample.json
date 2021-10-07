@@ -1,0 +1,84 @@
+[
+  {
+    "id": 1,
+    "suite": "sparkbox.com",
+    "pages": [
+      {
+        "name": "sparkbox.com",
+        "performance": 96,
+        "accessibility": 73,
+        "bestPractices": 94,
+        "seo": 71
+      },
+      {
+        "name": "sparkbox.com/work",
+        "performance": 72,
+        "accessibility": 82,
+        "bestPractices": 93,
+        "seo": 73
+      },
+      {
+        "name": "sparkbox.com/team",
+        "performance": 78,
+        "accessibility": 98,
+        "bestPractices": 87,
+        "seo": 91
+      },
+      {
+        "name": "sparkbox.com/contact",
+        "performance": 77,
+        "accessibility": 91,
+        "bestPractices": 73,
+        "seo": 72
+      },
+      {
+        "name": "sparkbox.com/work/dpl",
+        "performance": 92,
+        "accessibility": 91,
+        "bestPractices": 89,
+        "seo": 74
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "suite": "humsci.stanford.edu",
+    "pages": [
+      {
+        "name": "humsci-beta.stanford.edu",
+        "performance": 88,
+        "accessibility": 76,
+        "bestPractices": 79,
+        "seo": 90
+      },
+      {
+        "name": "humsci-beta.stanford.edu/academics/physics",
+        "performance": 76,
+        "accessibility": 79,
+        "bestPractices": 76,
+        "seo": 89
+      },
+      {
+        "name": "humsci-beta.stanford.edu/academics/east-asian-languages-and-cultures",
+        "performance": 87,
+        "accessibility": 71,
+        "bestPractices": 92,
+        "seo": 80
+      },
+      {
+        "name": "humsci-beta.stanford.edu/academics/art-and-art-history",
+        "performance": 83,
+        "accessibility": 70,
+        "bestPractices": 86,
+        "seo": 91
+      },
+      {
+        "name": "humsci-beta.stanford.edu/academics/chemistry",
+        "performance": 93,
+        "accessibility": 83,
+        "bestPractices": 79,
+        "seo": 73
+      }
+    ]
+  }
+]
