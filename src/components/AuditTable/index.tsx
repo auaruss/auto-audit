@@ -1,6 +1,7 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement } from "react";
 
 type Page = {
+  _id: number;
   name: string;
   performance: number;
   accessibility: number;
@@ -20,31 +21,35 @@ export const AuditTableRow = ({
   bestPractices,
   seo,
 }: Page): ReactElement => (
-  <tr className='audit-table__row'>
-    <th className='audit-table__header'>{ name }</th>
-    <td className='audit-table__data'>
-      <span className='mobile-table-marker'>Performance: </span>{ performance }
+  <tr className="audit-table__row">
+    <th className="audit-table__header">{name}</th>
+    <td className="audit-table__data">
+      <span className="mobile-table-marker">Performance: </span>
+      {performance}
     </td>
-    <td className='audit-table__data'>
-      <span className='mobile-table-marker'>Accessibility: </span>{ accessibility }
+    <td className="audit-table__data">
+      <span className="mobile-table-marker">Accessibility: </span>
+      {accessibility}
     </td>
-    <td className='audit-table__data'>
-      <span className='mobile-table-marker'>Best Practices: </span>{ bestPractices }
+    <td className="audit-table__data">
+      <span className="mobile-table-marker">Best Practices: </span>
+      {bestPractices}
     </td>
-    <td className='audit-table__data'>
-      <span className='mobile-table-marker'>SEO: </span>{ seo }
+    <td className="audit-table__data">
+      <span className="mobile-table-marker">SEO: </span>
+      {seo}
     </td>
   </tr>
 );
 
 export const AuditTableCaption = ({ site }: { site: string }): ReactElement => (
-  <caption className='audit-table__caption'>
-    Summary of the Google Lighthouse attributes of { site }
+  <caption className="audit-table__caption">
+    Summary of the Google Lighthouse attributes of {site}
   </caption>
 );
 
 export const AuditTableHeader = (): ReactElement => (
-  <thead className='audit-table__header'>
+  <thead className="audit-table__header">
     <tr>
       <th>URL</th>
       <th>Performance</th>
@@ -55,23 +60,16 @@ export const AuditTableHeader = (): ReactElement => (
   </thead>
 );
 
-export const AuditTable = ({site, pages}: Props): ReactElement  => (
-  <table className='audit-table'>
-    <AuditTableCaption site={ site } />
+export const AuditTable = ({ site, pages }: Props): ReactElement => (
+  <table className="audit-table">
+    <AuditTableCaption site={site} />
     <AuditTableHeader />
-    <tbody className='audit-table__body'>
-      { pages.map(({
-          name, performance, accessibility, bestPractices, seo,
-        }) => (<AuditTableRow
-          name={name}
-          performance={performance}
-          accessibility={accessibility}
-          bestPractices={bestPractices}
-          seo={seo}
-        />)) }
+    <tbody className="audit-table__body">
+      {pages.map((page) => (
+        <AuditTableRow {...page} key={page._id} />
+      ))}
     </tbody>
   </table>
 );
-
 
 export default AuditTable;
