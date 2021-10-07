@@ -1,4 +1,25 @@
-@import '../../../static/scss/variables';
+.content-pane {
+  display: block;
+  position: revert;
+  overflow-y: auto;
+  background: $white;
+  width: 100%;
+  height: calc(100vh - 90px);
+
+  .audit-table:last-child {
+    margin-bottom: 10rem;
+  }
+
+  @supports (display: grid) {
+    grid-area: content;
+  }
+
+  @media (min-width: $large-breakpoint) {
+    .audit-table:last-child {
+      margin-bottom: 3rem;
+    }
+  }
+}
 
 .mobile-table-marker {
   font-weight: bold;
@@ -42,7 +63,7 @@
     margin-bottom: 2rem;
   }
 
-  @media (min-width: 60rem) {
+  @media (min-width: $large-breakpoint) {
     margin: 0 auto;
     border: 1px solid black;
     margin-top: 2rem;
