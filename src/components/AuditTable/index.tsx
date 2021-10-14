@@ -9,65 +9,68 @@ type Page = {
   seo: number;
 };
 
-type Props = {
+export type Props = {
   site: string;
   pages: Page[];
 };
 
-export const AuditTableRow = ({
+const makeAuditTableRow = ({
+  _id,
   name,
   performance,
   accessibility,
   bestPractices,
   seo,
 }: Page): ReactElement => (
-  <tr className="audit-table__row">
+  <tr className="audit-table__row" key={ _id }>
     <th className="audit-table__header">{name}</th>
-    <td className="audit-table__data">
+    <td
+      className="audit-table__data"
+      data-testid={`performance-${_id}`}
+    >
       <span className="mobile-table-marker">Performance: </span>
-      {performance}
+      { performance }
     </td>
-    <td className="audit-table__data">
+    <td
+      className="audit-table__data"
+      data-testid={`accessibility-${_id}`}
+    >
       <span className="mobile-table-marker">Accessibility: </span>
-      {accessibility}
+      { accessibility }
     </td>
-    <td className="audit-table__data">
+    <td
+      className="audit-table__data"
+      data-testid={`best-practices-${_id}`}
+    >
       <span className="mobile-table-marker">Best Practices: </span>
-      {bestPractices}
+      { bestPractices }
     </td>
-    <td className="audit-table__data">
+    <td
+      className="audit-table__data"
+      data-testid={`seo-${_id}`}
+    >
       <span className="mobile-table-marker">SEO: </span>
-      {seo}
+      { seo }
     </td>
   </tr>
 );
 
-export const AuditTableCaption = ({ site }: { site: string }): ReactElement => (
-  <caption className="audit-table__caption">
-    Summary of the Google Lighthouse attributes of {site}
-  </caption>
-);
-
-export const AuditTableHeader = (): ReactElement => (
-  <thead className="audit-table__header">
-    <tr>
-      <th>URL</th>
-      <th>Performance</th>
-      <th>Accessibility</th>
-      <th>Best practices</th>
-      <th>SEO</th>
-    </tr>
-  </thead>
-);
-
-export const AuditTable = ({ site, pages }: Props): ReactElement => (
+export const AuditTable = ({ site, pages }: Props): JSX.Element => (
   <table className="audit-table">
-    <AuditTableCaption site={site} />
-    <AuditTableHeader />
+    <caption className="audit-table__caption">
+      Summary of the Google Lighthouse attributes of { site }
+    </caption>
+    <thead className="audit-table__header">
+      <tr>
+        <th>URL</th>
+        <th>Performance</th>
+        <th>Accessibility</th>
+        <th>Best practices</th>
+        <th>SEO</th>
+      </tr>
+    </thead>
     <tbody className="audit-table__body">
-      {pages.map((page) => (
-        <AuditTableRow {...page} key={page._id} />
-      ))}
+      { pages.map(makeAuditTableRow) }
     </tbody>
   </table>
 );
