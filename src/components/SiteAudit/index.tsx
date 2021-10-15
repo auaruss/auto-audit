@@ -5,7 +5,11 @@ type Props = {
 };
 
 export const SiteAudit = ({ site }: Props): ReactElement => (
-  <div className="site-audits__title" title="{ site }">
+  <div
+    className="site-audits__title"
+    title={ site }
+    data-testid={site}
+  >
     { site }
   </div>
 );
