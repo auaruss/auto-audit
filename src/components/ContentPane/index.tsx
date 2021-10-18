@@ -1,97 +1,56 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement } from "react";
+import AuditTable from "../AuditTable";
 
-export const ContentPane = (): ReactElement  => (
-  <main className='content-pane'>
-    <table className='audit-table'>
-      <caption className='audit-table__caption'>
-        Summary of the Google Lighthouse attributes of sparkbox.com
-      </caption>
-      <thead className='audit-table__header'>
-        <tr>
-          <th>URL</th>
-          <th>Performance</th>
-          <th>Accessibility</th>
-          <th>Best practices</th>
-          <th>SEO</th>
-        </tr>
-      </thead>
-      <tbody className='audit-table__body'>
-        <tr className='audit-table__row'>
-          <th className='audit-table__header'>https://sparkbox.com/work</th>
-          <td className='audit-table__data'>
-            <span className='mobile-table-marker'>Performance: </span>57
-          </td>
-          <td className='audit-table__data'>
-            <span className='mobile-table-marker'>Accessibility: </span>100
-          </td>
-          <td className='audit-table__data'>
-            <span className='mobile-table-marker'>Best Practices: </span>93
-          </td>
-          <td className='audit-table__data'>
-            <span className='mobile-table-marker'>SEO: </span>100
-          </td>
-        </tr>
-        <tr className='audit-table__row'>
-          <th>https://sparkbox.com/</th>
-          <td className='audit-table__data'>
-            <span className='mobile-table-marker'>Performance: </span>65
-          </td>
-          <td className='audit-table__data'>
-            <span className='mobile-table-marker'>Accessibility: </span>100
-          </td>
-          <td className='audit-table__data'>
-            <span className='mobile-table-marker'>Best Practices: </span>93
-          </td>
-          <td className='audit-table__data'>
-            <span className='mobile-table-marker'>SEO: </span>100
-          </td>
-        </tr>
-        <tr className='audit-table__row'>
-          <th>https://sparkbox.com/team</th>
-          <td className='audit-table__data'>
-            <span className='mobile-table-marker'>Performance: </span>66
-          </td>
-          <td className='audit-table__data'>
-            <span className='mobile-table-marker'>Accessibility: </span>100
-          </td>
-          <td className='audit-table__data'>
-            <span className='mobile-table-marker'>Best Practices: </span>93
-          </td>
-          <td className='audit-table__data'>
-            <span className='mobile-table-marker'>SEO: </span>100
-          </td>
-        </tr>
-        <tr className='audit-table__row'>
-          <th>https://sparkbox.com/contact</th>
-          <td className='audit-table__data'>
-            <span className='mobile-table-marker'>Performance: </span>66
-          </td>
-          <td className='audit-table__data'>
-            <span className='mobile-table-marker'>Accessibility: </span>100
-          </td>
-          <td className='audit-table__data'>
-            <span className='mobile-table-marker'>Best Practices: </span>93
-          </td>
-          <td className='audit-table__data'>
-            <span className='mobile-table-marker'>SEO: </span>100
-          </td>
-        </tr>
-        <tr className='audit-table__row'>
-          <th>https://sparkbox.com/work/dpl</th>
-          <td className='audit-table__data'>
-            <span className='mobile-table-marker'>Performance: </span>67
-          </td>
-          <td className='audit-table__data'>
-            <span className='mobile-table-marker'>Accessibility: </span>100
-          </td>
-          <td className='audit-table__data'>
-            <span className='mobile-table-marker'>Best Practices: </span>93
-          </td>
-          <td className='audit-table__data'>
-            <span className='mobile-table-marker'>SEO: </span>100
-          </td>
-        </tr>
-      </tbody>
-    </table>
+const sparkboxData = {
+  site: "sparkbox.com",
+  pages: [
+    {
+      _id: 1,
+      name: "sparkbox.com",
+      performance: 96,
+      accessibility: 73,
+      bestPractices: 94,
+      seo: 71,
+    },
+    {
+      _id: 2,
+      name: "sparkbox.com/work",
+      performance: 72,
+      accessibility: 82,
+      bestPractices: 93,
+      seo: 73,
+    },
+    {
+      _id: 3,
+      name: "sparkbox.com/team",
+      performance: 78,
+      accessibility: 98,
+      bestPractices: 87,
+      seo: 91,
+    },
+    {
+      _id: 4,
+      name: "sparkbox.com/contact",
+      performance: 77,
+      accessibility: 91,
+      bestPractices: 73,
+      seo: 72,
+    },
+    {
+      _id: 5,
+      name: "sparkbox.com/work/dpl",
+      performance: 92,
+      accessibility: 91,
+      bestPractices: 89,
+      seo: 74,
+    },
+  ],
+};
+
+export const ContentPane = (): ReactElement => (
+  <main className="content-pane">
+    <AuditTable { ...sparkboxData } />
   </main>
 );
+
+export default ContentPane;

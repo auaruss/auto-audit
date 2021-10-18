@@ -31,4 +31,8 @@ module.exports = {
 
   // Runs the setup file for Jest-Dom
   setupFilesAfterEnv: ["./jest.setup.js"],
+
+  moduleNameMapper: {
+    '^.+\\.(css|scss)$': '<rootDir>/config/CSSStub.js',
+  },
 };
