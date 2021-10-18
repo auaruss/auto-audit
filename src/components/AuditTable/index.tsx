@@ -14,6 +14,16 @@ export type Props = {
   pages: Page[];
 };
 
+const makeAuditTableData = (marker: string, score: number, testId: string): ReactElement => (
+  <td
+    className="audit-table__data"
+    data-testid={testId}
+  >
+    <span className="mobile-table-marker">{marker}: </span>
+    {score}
+  </td>
+);
+
 const makeAuditTableRow = ({
   _id,
   name,
@@ -24,34 +34,10 @@ const makeAuditTableRow = ({
 }: Page): ReactElement => (
   <tr className="audit-table__row" key={ _id }>
     <th className="audit-table__header">{name}</th>
-    <td
-      className="audit-table__data"
-      data-testid={`performance-${_id}`}
-    >
-      <span className="mobile-table-marker">Performance: </span>
-      { performance }
-    </td>
-    <td
-      className="audit-table__data"
-      data-testid={`accessibility-${_id}`}
-    >
-      <span className="mobile-table-marker">Accessibility: </span>
-      { accessibility }
-    </td>
-    <td
-      className="audit-table__data"
-      data-testid={`best-practices-${_id}`}
-    >
-      <span className="mobile-table-marker">Best Practices: </span>
-      { bestPractices }
-    </td>
-    <td
-      className="audit-table__data"
-      data-testid={`seo-${_id}`}
-    >
-      <span className="mobile-table-marker">SEO: </span>
-      { seo }
-    </td>
+    {makeAuditTableData('Performance', performance, `performance-${_id}`)}
+    {makeAuditTableData('Accessibility', accessibility, `accessibility-${_id}`)}
+    {makeAuditTableData('Best Practices', bestPractices, `best-practices-${_id}`)}
+    {makeAuditTableData('SEO', seo, `seo-${_id}`)}
   </tr>
 );
 
