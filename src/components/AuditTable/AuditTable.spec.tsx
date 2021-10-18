@@ -103,108 +103,77 @@ describe('the AuditTable component', () => {
     ).toHaveTextContent(sparkboxData.pages[0].seo.toString());
   });
 
-  it('matches the first column\'s header to its first score', () => {
-    const header: string | undefined = 
-      screen.getByRole('table')
-        .querySelector('thead')
-        ?.querySelectorAll('th')[0].innerHTML;
+  describe('table columns scores must match their header', () => {
+    const getHeader = (index: number): string | false => {
+      const maybeHeader: string | undefined =  
+        screen.getByRole('table')
+          .querySelector('thead')
+          ?.querySelectorAll('th')[index].innerHTML;
 
-    if (header) {
-      const property = mapping.get(header);
-      if (property) {
-        expect(
-          screen.getByRole('table')
-          .querySelector('tbody')
-          ?.querySelectorAll('tr')[0].children[0].innerHTML
-          .includes(sparkboxData.pages[0][property].toString())
-        ).toBeTruthy();
-      }
-      else fail();
+      return (maybeHeader) ? maybeHeader : false;
     }
-    else fail();
-  });
 
-  it('matches the second column\'s header to its first score', () => {
-    const header: string | undefined = 
+    const doesScoreExistAndMatchHeader = (
+      property: 'name'
+      | 'performance'
+      | 'accessibility'
+      | 'bestPractices'
+      | 'seo', index: number
+    ): boolean => 
       screen.getByRole('table')
-        .querySelector('thead')
-        ?.querySelectorAll('th')[1].innerHTML;
+        .querySelector('tbody')
+        ?.querySelectorAll('tr')[0].children[index].innerHTML
+        .includes(sparkboxData.pages[0][property].toString())
+      || false;
 
-    if (header) {
+    it('matches the first column\'s header to its first score', () => {
+      const header: string | false = getHeader(0);
+      if (!header) fail('Couldn\'t find a valid header in the first row');
+
       const property = mapping.get(header);
-      if (property) {
-        expect(
-          screen.getByRole('table')
-          .querySelector('tbody')
-          ?.querySelectorAll('tr')[0].children[1].innerHTML
-          .includes(sparkboxData.pages[0][property].toString())
-        ).toBeTruthy();
-      }
-      else fail();
-    }
-    else fail();
-  });
+      if (!property) fail('Couldn\'t find a matching property for our header');
 
-  it('matches the third column\'s header to its first score', () => {
-    const header: string | undefined = 
-      screen.getByRole('table')
-        .querySelector('thead')
-        ?.querySelectorAll('th')[2].innerHTML;
+      expect(doesScoreExistAndMatchHeader(property, 0)).toBeTruthy();
+    });
 
-    if (header) {
+    it('matches the second column\'s header to its first score', () => {
+      const header: string | false = getHeader(1);
+      if (!header) fail('Couldn\'t find a valid header in the first row');
+
       const property = mapping.get(header);
-      if (property) {
-        expect(
-          screen.getByRole('table')
-          .querySelector('tbody')
-          ?.querySelectorAll('tr')[0].children[2].innerHTML
-          .includes(sparkboxData.pages[0][property].toString())
-        ).toBeTruthy();
-      }
-      else fail();
-    }
-    else fail();
-  });
+      if (!property) fail('Couldn\'t find a matching property for our header');
 
-  it('matches the fourth column\'s header to its first score', () => {
-    const header: string | undefined = 
-      screen.getByRole('table')
-        .querySelector('thead')
-        ?.querySelectorAll('th')[3].innerHTML;
+      expect(doesScoreExistAndMatchHeader(property, 1)).toBeTruthy();
+    });
 
-    if (header) {
+    it('matches the third column\'s header to its first score', () => {
+      const header: string | false = getHeader(2);
+      if (!header) fail('Couldn\'t find a valid header in the first row');
+
       const property = mapping.get(header);
-      if (property) {
-        expect(
-          screen.getByRole('table')
-          .querySelector('tbody')
-          ?.querySelectorAll('tr')[0].children[3].innerHTML
-          .includes(sparkboxData.pages[0][property].toString())
-        ).toBeTruthy();
-      }
-      else fail();
-    }
-    else fail();
-  });
+      if (!property) fail('Couldn\'t find a matching property for our header');
 
-  it('matches the fifth column\'s header to its first score', () => {
-    const header: string | undefined = 
-      screen.getByRole('table')
-        .querySelector('thead')
-        ?.querySelectorAll('th')[4].innerHTML;
+      expect(doesScoreExistAndMatchHeader(property, 2)).toBeTruthy();
+    });
 
-    if (header) {
+    it('matches the fourth column\'s header to its first score', () => {
+      const header: string | false = getHeader(3);
+      if (!header) fail('Couldn\'t find a valid header in the first row');
+
       const property = mapping.get(header);
-      if (property){
-        expect(
-          screen.getByRole('table')
-          .querySelector('tbody')
-          ?.querySelectorAll('tr')[0].children[4].innerHTML
-          .includes(sparkboxData.pages[0][property].toString())
-        ).toBeTruthy();
-      }
-      else fail();
-    }
-    else fail();
+      if (!property) fail('Couldn\'t find a matching property for our header');
+
+      expect(doesScoreExistAndMatchHeader(property, 3)).toBeTruthy();
+    });
+
+    it('matches the fifth column\'s header to its first score', () => {
+      const header: string | false = getHeader(4);
+      if (!header) fail('Couldn\'t find a valid header in the first row');
+
+      const property = mapping.get(header);
+      if (!property) fail('Couldn\'t find a matching property for our header');
+
+      expect(doesScoreExistAndMatchHeader(property, 4)).toBeTruthy();
+    });
   });
 });
